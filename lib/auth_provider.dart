@@ -46,7 +46,7 @@ class Auth with ChangeNotifier {
     print(_user_Id);
     print("hashhh2323");
 
-    final url = "https://ee2822a8.ngrok.io/api/activate/$_user_Id/";
+    final url = "https://077e8e13.ngrok.io/api/activate/$_user_Id/";
 
     final response = await http.post(url,
         body: json.encode({"otp": enteredOtp}),
@@ -66,13 +66,16 @@ class Auth with ChangeNotifier {
   }
 
   Future<void> resendOTP() async {
-    final url = "https://ee2822a8.ngrok.io/api/resendOtp/$_user_Id/";
-    await http.post(url);
+    print(_user_Id);
+    print("OTP has been sent to  user $_user_Id");
+    final url = "https://077e8e13.ngrok.io/api/resendotp/$_user_Id/";
+    final response =  await http.get(url);
+    print(json.decode(response.body));
   }
 
   Future<void> signUp(BuildContext context, String username, String email,
       String password) async {
-    const url = "https://ee2822a8.ngrok.io/api/signup/";
+    const url = "https://077e8e13.ngrok.io/api/signup/";
     final response = await http.post(
       url,
       headers: {'Content-Type': 'application/json'},
@@ -118,7 +121,7 @@ class Auth with ChangeNotifier {
       BuildContext context, String username, String password) async {
     print(username);
     print(password);
-    const url = "https://ee2822a8.ngrok.io/api/login/";
+    const url = "https://077e8e13.ngrok.io/api/login/";
     final response = await http.post(url,
         body: json.encode({"uname_or_em": username, "password": password}),
         headers: {'Content-Type': 'application/json'});
